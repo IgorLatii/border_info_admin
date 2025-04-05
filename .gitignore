@@ -1,0 +1,13 @@
+# Virtual environment
+.venv/
+
+# PyCharm
+.idea/
+
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# dotenv
+.env
