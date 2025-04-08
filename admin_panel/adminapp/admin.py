@@ -2,20 +2,14 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from .models import Category, QuestionAnswer, UserQuery, PredefinedResponse
+from .models import QuestionAnswer, UserQuery, PredefinedResponse
 
-
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
-    search_fields = ('name',)
-    ordering = ('name',)
 
 @admin.register(QuestionAnswer)
 class QuestionAnswerAdmin(admin.ModelAdmin):
-    list_display = ('id', 'question_summary', 'category', 'language', 'confidence', 'created_at', 'updated_at')
+    list_display = ('id', 'question_summary', 'language', 'created_at', 'updated_at')
     search_fields = ('question', 'answer')
-    list_filter = ('category', 'language', 'confidence')
+    list_filter = ('language', )
     ordering = ('-updated_at',)
 
     def question_summary(self, obj):
@@ -24,9 +18,9 @@ class QuestionAnswerAdmin(admin.ModelAdmin):
 
 @admin.register(UserQuery)
 class UserQueryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user_id', 'query_summary', 'predicted_category', 'processed', 'created_at')
-    search_fields = ('query', 'detected_keywords')
-    list_filter = ('processed', 'predicted_category')
+    list_display = ('id', 'user_id', 'query_summary', 'processed', 'created_at')
+    search_fields = ('query', )
+    list_filter = ('processed', )
     ordering = ('-created_at',)
 
     def query_summary(self, obj):
