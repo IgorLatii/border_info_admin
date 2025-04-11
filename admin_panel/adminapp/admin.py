@@ -11,6 +11,7 @@ class QuestionAnswerAdmin(admin.ModelAdmin):
     search_fields = ('question', 'processed')
     list_filter = ('language', 'processed')
     ordering = ('-updated_at',)
+    readonly_fields = ('embedding', )
 
     def question_summary(self, obj):
         return obj.question[:50] + "..." if len(obj.question) > 50 else obj.question
@@ -22,3 +23,7 @@ class PredefinedResponseAdmin(admin.ModelAdmin):
     search_fields = ('command', 'response_text')
     list_filter = ('language',)
     ordering = ('command',)
+
+admin.site.site_title = "Frontier_Consult Admin panel"
+admin.site.site_header = "Frontier_Consult Admin panel"
+admin.site.index_title = "Frontier_Consult administration"
