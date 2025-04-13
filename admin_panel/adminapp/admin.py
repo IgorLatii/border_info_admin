@@ -19,8 +19,8 @@ class QuestionAnswerAdmin(admin.ModelAdmin):
 
 @admin.register(PredefinedResponse)
 class PredefinedResponseAdmin(admin.ModelAdmin):
-    list_display = ('command', 'language', 'created_at')
-    search_fields = ('command', 'response_text')
+    list_display = ('command', 'response_text', 'language', 'created_at')
+    search_fields = ('command', 'response_text', 'language')
     list_filter = ('language',)
     ordering = ('command',)
 
