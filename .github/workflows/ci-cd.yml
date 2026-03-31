@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build image
-        run: docker build -t $IMAGE_NAME:dev -f admin_panel/Dockerfile .
+        run: docker build -t $IMAGE_NAME:dev -f admin_panel/Dockerfile admin_panel
 
       - name: Push image
         run: docker push $IMAGE_NAME:dev
